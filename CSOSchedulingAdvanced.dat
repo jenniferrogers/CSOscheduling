@@ -1,0 +1,202 @@
+#########################################
+#  CSO Scheduling Data
+#########################################
+
+set people := 
+					Brennan 
+					Barrett 
+					Shadd 
+					Woo 
+					Aguilar 
+					Escobedo 
+					Moten 
+					Brown 
+					Winger 
+					Diaz 
+					Pak;
+
+set shifts := 
+				DriversSafetyTraining 
+				BirchMon 
+				BirchTue 
+				BirchWed 
+				BirchThu 
+				BirchFri 
+				PCEastMon 
+				PCEastTue 
+				PCEastWed 
+				PCEastThu 
+				PCEastFri;
+
+set timeSlots := 
+				Mon1000 
+				Tue1000 
+				Wed1000 
+				Thu1000 
+				Fri1000 
+				Mon1400 
+				Tue1400 
+				Wed1400 
+				Thu1400 
+				Fri1400 ;
+
+param timeSlotsPerHour := .25;
+
+param isOIC := 
+					Brennan 1
+					Barrett 0
+					Shadd 0
+					Woo 0
+					Aguilar 0
+					Escobedo 0
+					Moten 0
+					Brown 0
+					Winger 1
+					Diaz 0
+					Pak 0;
+
+param isDispatch :=  
+					Brennan 1
+					Barrett 0
+					Shadd 1
+					Woo 1
+					Aguilar 0
+					Escobedo 1
+					Moten 0
+					Brown 1
+					Winger 1
+					Diaz 0
+					Pak 0;
+
+param isSIO :=  
+					Brennan 1
+					Barrett 0
+					Shadd 0
+					Woo 0
+					Aguilar 0
+					Escobedo 1
+					Moten 0
+					Brown 1
+					Winger 0
+					Diaz 0
+					Pak 0;
+
+param isTrainee :=  
+					Brennan 0
+					Barrett 0
+					Shadd 0
+					Woo 0
+					Aguilar 0
+					Escobedo 0
+					Moten 0
+					Brown 0
+					Winger 0
+					Diaz 0
+					Pak 0;
+
+# Note: if we want to turn the table the other way, use (tr)
+param isAvailable : 	Mon1000 Tue1000 Wed1000 Thu1000 Fri1000 Mon1400 Tue1400 Wed1400 Thu1400 Fri1400:= 
+				Brennan 1       1       0       1       0       0       0       0       0       0
+				Barrett 0       1       0       1       0       0       0       0       0       0
+				Shadd   0       1       0       1       0       0       0       0       0       0
+				Woo     0       1       0       1       0       0       0       0       0       0
+				Aguilar 1       0       1       0       0       0       0       0       0       0
+				Escobedo 0      1       0       0       0       0       0       0       0       0
+				Moten   0       0       0       1       0       0       0       0       0       0
+				Brown   0       0       0       0       1       0       0       0       0       0
+				Winger  1       0       1       0       0       1       0       1       0       0
+				Diaz    0       1       0       1       0       0       1       0       1       0
+				Pak     0       0       0       0       1       0       0       0       0       1;
+
+param targetHours := 
+					Brennan 20
+					Barrett 20
+					Shadd 20
+					Woo 20
+					Aguilar 20
+					Escobedo 20
+					Moten 20
+					Brown 20
+					Winger 20
+					Diaz 20
+					Pak 20;
+
+param maxHours := 20;
+
+param isRunning: 		Mon1000 Tue1000 Wed1000 Thu1000 Fri1000 Mon1400 Tue1400 Wed1400 Thu1400 Fri1400:= 
+  DriversSafetyTraining 0       1       0       1       0       0       0       0       0       0
+			   BirchMon 1       0       0       0       0       0       0       0       0       0
+			   BirchTue 1       0       0       0       0       0       0       0       0       0
+			   BirchWed 1       0       0       0       0       0       0       0       0       0
+			   BirchThu 1       0       0       0       0       0       0       0       0       0
+			   BirchFri 1       0       0       0       0       0       0       0       0       0
+			  PCEastMon 1       0       0       0       0       1       0       0       0       0
+			  PCEastTue 0       1       0       0       0       0       1       0       0       0
+			  PCEastWed 0       0       1       0       0       0       0       1       0       0
+			  PCEastThu 0       0       0       1       0       0       0       0       1       0
+			  PCEastFri 0       0       0       0       1       0       0       0       0       1;
+
+param numPeople := 
+				DriversSafetyTraining 4 
+				BirchMon 1 
+				BirchTue 1 
+				BirchWed 1 
+				BirchThu 1 
+				BirchFri 1 
+				PCEastMon 1 
+				PCEastTue 1 
+				PCEastWed 1 
+				PCEastThu 1 
+				PCEastFri 1;
+
+param numOIC := 
+				DriversSafetyTraining 0 
+				BirchMon 0 
+				BirchTue 0 
+				BirchWed 0 
+				BirchThu 0 
+				BirchFri 0 
+				PCEastMon 0 
+				PCEastTue 0 
+				PCEastWed 0 
+				PCEastThu 0 
+				PCEastFri 0 ;
+
+param numSIO := 
+				DriversSafetyTraining 0 
+				BirchMon 0 
+				BirchTue 0 
+				BirchWed 0 
+				BirchThu 0 
+				BirchFri 0 
+				PCEastMon 0 
+				PCEastTue 0 
+				PCEastWed 0 
+				PCEastThu 0 
+				PCEastFri 0 ;
+
+param numDispatch := 
+				DriversSafetyTraining 0 
+				BirchMon 0 
+				BirchTue 0 
+				BirchWed 0 
+				BirchThu 0 
+				BirchFri 0 
+				PCEastMon 0 
+				PCEastTue 0 
+				PCEastWed 0 
+				PCEastThu 0 
+				PCEastFri 0 ;
+
+param maxNumTrainees := 
+				DriversSafetyTraining 0 
+				BirchMon 0 
+				BirchTue 0 
+				BirchWed 0 
+				BirchThu 0 
+				BirchFri 0 
+				PCEastMon 0 
+				PCEastTue 0 
+				PCEastWed 0 
+				PCEastThu 0 
+				PCEastFri 0 ;
