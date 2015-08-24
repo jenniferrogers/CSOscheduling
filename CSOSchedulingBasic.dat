@@ -1,0 +1,33 @@
+#########################################
+#  CSO Scheduling Data
+#########################################
+
+set people := Eamon;
+set shifts := OIC;
+set timeSlots := Mon2045 Mon2100;
+
+
+param timeSlotsPerHour := 4;
+
+param isOIC := Eamon 1;
+param isDispatch := Eamon 1;
+param isSIO := Eamon 1;
+param isTrainee := Eamon 0;
+
+# Note: if we want to turn the table the other way, use (tr)
+param isAvailable : 	Mon2045  Mon2100:= 
+				Eamon   1        0;
+
+param targetHours := Eamon 0.25;
+param maxHours := 20;
+
+param isRunning: 		Mon2045 Mon2100:= 
+				OIC     1       0;
+
+param numPeople := OIC 1;
+param numOIC := OIC 1;
+param numSIO := OIC 0;
+param numDispatch := OIC 0;
+param maxNumTrainees := OIC 0;
+
+

@@ -1,0 +1,4 @@
+solve;
+display isWorkingShift;
+display isWorkingTime;
+display numPeopleWorkingToPrint;
