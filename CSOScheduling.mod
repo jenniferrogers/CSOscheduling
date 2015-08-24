@@ -46,6 +46,7 @@ minimize nothing:
 subject to numPeopleWorking{s in shifts}:
 	numPeople[s] = numPeopleWorkingToPrint[s];
 
+# Print number of people working per shift
 subject to numPeopleWorkingToPrintConstraint{s in shifts}:
 	numPeopleWorkingToPrint[s] = sum{p in people} isWorkingShift[p, s];
 
