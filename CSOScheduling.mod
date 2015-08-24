@@ -46,7 +46,7 @@ minimize nothing:
 subject to numPeopleWorking{s in shifts}:
 	numPeople[s] = numPeopleWorkingToPrint[s];
 
-subject to numPeopleWorkingToPrint{s in shifts}:
+subject to numPeopleWorkingToPrintConstraint{s in shifts}:
 	numPeopleWorkingToPrint[s] = sum{p in people} isWorkingShift[p, s];
 
 # Per shift, at least as many OICs work as necessary
