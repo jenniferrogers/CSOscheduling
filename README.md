@@ -9,3 +9,7 @@ Boring
 <li>Enter your email and prepare for spam from IBM (feel free to enter my HMC email)</li>
 <li>Sit on the next page until the solver finishes (~30 seconds)</li>
 </ol>
+
+## Useful CPLEX options
+http://www.gams.com/dd/docs/solvers/cplex/index.html#CPLEXfeasopt
+Relaxes constraints in an integer program until the problem is feasible
