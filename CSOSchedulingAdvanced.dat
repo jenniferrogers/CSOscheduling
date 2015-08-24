@@ -126,10 +126,10 @@ param maxHours := 20;
 param isRunning: 		Mon1000 Tue1000 Wed1000 Thu1000 Fri1000 Mon1400 Tue1400 Wed1400 Thu1400 Fri1400:= 
   DriversSafetyTraining 0       1       0       1       0       0       0       0       0       0
 			   BirchMon 1       0       0       0       0       0       0       0       0       0
-			   BirchTue 1       0       0       0       0       0       0       0       0       0
-			   BirchWed 1       0       0       0       0       0       0       0       0       0
-			   BirchThu 1       0       0       0       0       0       0       0       0       0
-			   BirchFri 1       0       0       0       0       0       0       0       0       0
+			   BirchTue 0       1       0       0       0       0       0       0       0       0
+			   BirchWed 0       0       1       0       0       0       0       0       0       0
+			   BirchThu 0       0       0       1       0       0       0       0       0       0
+			   BirchFri 0       0       0       0       1       0       0       0       0       0
 			  PCEastMon 1       0       0       0       0       1       0       0       0       0
 			  PCEastTue 0       1       0       0       0       0       1       0       0       0
 			  PCEastWed 0       0       1       0       0       0       0       1       0       0
